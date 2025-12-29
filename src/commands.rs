@@ -80,12 +80,12 @@ pub(crate) async fn has_image<R: Runtime>(app: AppHandle<R>) -> Result<bool> {
 ///
 /// # Example
 /// ```
-/// use tauri_plugin_clipboard_next::has_file;
-/// let has = has_file(app_handle).await?;
+/// use tauri_plugin_clipboard_next::has_files;
+/// let has = has_files(app_handle).await?;
 /// ```
 #[command]
-pub(crate) async fn has_file<R: Runtime>(app: AppHandle<R>) -> Result<bool> {
-    app.clipboard_next().has_file()
+pub(crate) async fn has_files<R: Runtime>(app: AppHandle<R>) -> Result<bool> {
+    app.clipboard_next().has_files()
 }
 
 /// Read plain text from the clipboard

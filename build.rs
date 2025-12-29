@@ -5,7 +5,7 @@ const COMMANDS: &[&str] = &[
     "has_rtf",
     "has_html",
     "has_image",
-    "has_file",
+    "has_files",
     "read_text",
     "read_rtf",
     "read_html",

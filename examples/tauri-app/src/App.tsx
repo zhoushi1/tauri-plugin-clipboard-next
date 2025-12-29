@@ -1,87 +1,98 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { invoke } from "@tauri-apps/api/core";
+import {
+  startWatch,
+  onClipboardChange
+} from "tauri-plugin-clipboard-next-api";
 import { Box, Button, Stack } from "@mui/material";
 
 const App: React.FC = () => {
-  const cmd_read_text = (async () => {
+  const cmdReadText = (async () => {
     const cmd_read_text = await invoke("read_text", {})
     console.log("cmd_read_text", cmd_read_text)
   })
-  const read_text = (async () => {
+  const readText = (async () => {
     const read_text = await invoke("plugin:clipboard-next|read_text", {})
     console.log("read_text", read_text)
   })
-  const read_html = (async () => {
+  const readHtml = (async () => {
     const read_html = await invoke("plugin:clipboard-next|read_html", {})
     console.log("read_html", read_html)
   })
-  const read_rtf = (async () => {
+  const readRtf = (async () => {
     const read_rtf = await invoke("plugin:clipboard-next|read_rtf", {})
     console.log("read_rtf", read_rtf)
   })
-  const read_image = (async () => {
+  const readImage = (async () => {
     const read_image = await invoke("plugin:clipboard-next|read_image", {})
     console.log("read_image", read_image)
   })
-  const read_files = (async () => {
+  const readFiles = (async () => {
     const read_files = await invoke("plugin:clipboard-next|read_files", {})
     console.log("read_files", read_files)
   })
-  const write_text = (async () => {
-    await invoke("plugin:clipboard-next|write_text", {content: "text: hello world!"})
+  const writeText = (async () => {
+    await invoke("plugin:clipboard-next|write_text", { content: "text: hello world!" })
   })
-  const write_rtf = (async () => {
-    await invoke("plugin:clipboard-next|write_rtf", {content: "rtf: hello world!"})
+  const writeRtf = (async () => {
+    await invoke("plugin:clipboard-next|write_rtf", { content: "rtf: hello world!" })
   })
-  const write_html = (async () => {
-    await invoke("plugin:clipboard-next|write_html", {content: "<h1>Hello, world!</h1>"})
+  const writeHtml = (async () => {
+    await invoke("plugin:clipboard-next|write_html", { content: "<h1>Hello, world!</h1>" })
   })
-  const write_image = (async () => {
+  const writeImage = (async () => {
     let image_path = "C:\\Users\\60746\\Pictures\\NSHM_PHOTO\\NSHM_PHOTO_2023_7_4_22_47_24.jpg";
-    await invoke("plugin:clipboard-next|write_image", {imagePath: image_path})
+    await invoke("plugin:clipboard-next|write_image", { imagePath: image_path })
     console.log("写入图片")
   })
-  const write_files = (async () => {
+  const writeFiles = (async () => {
     let files_path = ["C:\\Users\\60746\\Pictures\\NSHM_PHOTO\\NSHM_PHOTO_2023_7_4_22_47_24.jpg"];
-    await invoke("plugin:clipboard-next|write_files", {filesPath: files_path})
+    await invoke("plugin:clipboard-next|write_files", { filesPath: files_path })
   })
+
+  useEffect(() => {
+    startWatch();
+    onClipboardChange((result) => {
+      console.log("Clipboard changed: ", result);
+    });
+  }, []);
 
   return (
     <Box>
       <Stack direction={"row"} spacing={2}>
-        <Button variant={"contained"} onClick={cmd_read_text}>
+        <Button variant={"contained"} onClick={cmdReadText}>
           cmd_read_text
         </Button>
-        <Button variant={"contained"} onClick={read_text}>
+        <Button variant={"contained"} onClick={readText}>
           读取剪切板文本
         </Button>
-        <Button variant={"contained"} onClick={read_rtf}>
+        <Button variant={"contained"} onClick={readRtf}>
           读取剪切板富文本
         </Button>
-        <Button variant={"contained"} onClick={read_html}>
+        <Button variant={"contained"} onClick={readHtml}>
           读取剪切板html
         </Button>
-        <Button variant={"contained"} onClick={read_image}>
+        <Button variant={"contained"} onClick={readImage}>
           读取剪切板图片
         </Button>
-        <Button variant={"contained"} onClick={read_files}>
+        <Button variant={"contained"} onClick={readFiles}>
           读取剪切板文件
         </Button>
       </Stack>
       <Stack direction={"row"} spacing={2} marginTop={2}>
-        <Button variant={"contained"} onClick={write_text}>
+        <Button variant={"contained"} onClick={writeText}>
           写入文本到剪切板
         </Button>
-        <Button variant={"contained"} onClick={write_rtf}>
+        <Button variant={"contained"} onClick={writeRtf}>
           写入富文本到剪切板
         </Button>
-        <Button variant={"contained"} onClick={write_html}>
+        <Button variant={"contained"} onClick={writeHtml}>
           写入html到剪切板
         </Button>
-        <Button variant={"contained"} onClick={write_image}>
+        <Button variant={"contained"} onClick={writeImage}>
           写入图片到剪切板
         </Button>
-        <Button variant={"contained"} onClick={write_files}>
+        <Button variant={"contained"} onClick={writeFiles}>
           写入文件到剪切板
         </Button>
       </Stack>

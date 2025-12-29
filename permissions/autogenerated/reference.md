@@ -10,7 +10,7 @@ Default permissions for the plugin
 - `allow-has-rtf`
 - `allow-has-html`
 - `allow-has-image`
-- `allow-has-file`
+- `allow-has-files`
 - `allow-read-text`
 - `allow-read-rtf`
 - `allow-read-html`
@@ -114,12 +114,12 @@ Denies the get_text command without any pre-configured scope.
 <tr>
 <td>
 
-`clipboard-next:allow-has-file`
+`clipboard-next:allow-has-files`
 
 </td>
 <td>
 
-Enables the has_file command without any pre-configured scope.
+Enables the has_files command without any pre-configured scope.
 
 </td>
 </tr>
@@ -127,12 +127,12 @@ Enables the has_file command without any pre-configured scope.
 <tr>
 <td>
 
-`clipboard-next:deny-has-file`
+`clipboard-next:deny-has-files`
 
 </td>
 <td>
 
-Denies the has_file command without any pre-configured scope.
+Denies the has_files command without any pre-configured scope.
 
 </td>
 </tr>

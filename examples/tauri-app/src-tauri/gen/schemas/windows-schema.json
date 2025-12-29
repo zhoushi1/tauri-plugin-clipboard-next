@@ -177,10 +177,10 @@
       "description": "Permission identifier",
       "oneOf": [
         {
-          "description": "Default permissions for the plugin\n#### This default permission set includes:\n\n- `allow-start-watch`\n- `allow-stop-watch`\n- `allow-has-text`\n- `allow-has-rtf`\n- `allow-has-html`\n- `allow-has-image`\n- `allow-has-file`\n- `allow-read-text`\n- `allow-read-rtf`\n- `allow-read-html`\n- `allow-read-image`\n- `allow-read-files`\n- `allow-write-text`\n- `allow-write-rtf`\n- `allow-write-html`\n- `allow-write-image`\n- `allow-write-files`\n- `allow-clear`\n- `allow-get-file-path`",
+          "description": "Default permissions for the plugin\n#### This default permission set includes:\n\n- `allow-start-watch`\n- `allow-stop-watch`\n- `allow-has-text`\n- `allow-has-rtf`\n- `allow-has-html`\n- `allow-has-image`\n- `allow-has-files`\n- `allow-read-text`\n- `allow-read-rtf`\n- `allow-read-html`\n- `allow-read-image`\n- `allow-read-files`\n- `allow-write-text`\n- `allow-write-rtf`\n- `allow-write-html`\n- `allow-write-image`\n- `allow-write-files`\n- `allow-clear`\n- `allow-get-file-path`",
           "type": "string",
           "const": "clipboard-next:default",
-          "markdownDescription": "Default permissions for the plugin\n#### This default permission set includes:\n\n- `allow-start-watch`\n- `allow-stop-watch`\n- `allow-has-text`\n- `allow-has-rtf`\n- `allow-has-html`\n- `allow-has-image`\n- `allow-has-file`\n- `allow-read-text`\n- `allow-read-rtf`\n- `allow-read-html`\n- `allow-read-image`\n- `allow-read-files`\n- `allow-write-text`\n- `allow-write-rtf`\n- `allow-write-html`\n- `allow-write-image`\n- `allow-write-files`\n- `allow-clear`\n- `allow-get-file-path`"
+          "markdownDescription": "Default permissions for the plugin\n#### This default permission set includes:\n\n- `allow-start-watch`\n- `allow-stop-watch`\n- `allow-has-text`\n- `allow-has-rtf`\n- `allow-has-html`\n- `allow-has-image`\n- `allow-has-files`\n- `allow-read-text`\n- `allow-read-rtf`\n- `allow-read-html`\n- `allow-read-image`\n- `allow-read-files`\n- `allow-write-text`\n- `allow-write-rtf`\n- `allow-write-html`\n- `allow-write-image`\n- `allow-write-files`\n- `allow-clear`\n- `allow-get-file-path`"
         },
         {
           "description": "Enables the clear command without any pre-configured scope.",
@@ -201,10 +201,10 @@
           "markdownDescription": "Enables the get_text command without any pre-configured scope."
         },
         {
-          "description": "Enables the has_file command without any pre-configured scope.",
+          "description": "Enables the has_files command without any pre-configured scope.",
           "type": "string",
-          "const": "clipboard-next:allow-has-file",
-          "markdownDescription": "Enables the has_file command without any pre-configured scope."
+          "const": "clipboard-next:allow-has-files",
+          "markdownDescription": "Enables the has_files command without any pre-configured scope."
         },
         {
           "description": "Enables the has_html command without any pre-configured scope.",
@@ -321,10 +321,10 @@
           "markdownDescription": "Denies the get_text command without any pre-configured scope."
         },
         {
-          "description": "Denies the has_file command without any pre-configured scope.",
+          "description": "Denies the has_files command without any pre-configured scope.",
           "type": "string",
-          "const": "clipboard-next:deny-has-file",
-          "markdownDescription": "Denies the has_file command without any pre-configured scope."
+          "const": "clipboard-next:deny-has-files",
+          "markdownDescription": "Denies the has_files command without any pre-configured scope."
         },
         {
           "description": "Denies the has_html command without any pre-configured scope.",

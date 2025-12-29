@@ -9,7 +9,7 @@ permissions = [
     "allow-has-rtf",
     "allow-has-html",
     "allow-has-image",
-    "allow-has-file",
+    "allow-has-files",
     "allow-read-text",
     "allow-read-rtf",
     "allow-read-html",

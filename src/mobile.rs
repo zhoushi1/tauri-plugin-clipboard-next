@@ -149,7 +149,7 @@ impl<R: Runtime> ClipboardNext<R> {
         ClipboardNextManager::global().has(ContentFormat::Image)
     }
 
-    pub fn has_file(&self) -> Result<bool> {
+    pub fn has_files(&self) -> Result<bool> {
         ClipboardNextManager::global().has(ContentFormat::Files)
     }
 
