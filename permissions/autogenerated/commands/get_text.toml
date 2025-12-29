@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-get-text"
+description = "Enables the get_text command without any pre-configured scope."
+commands.allow = ["get_text"]
+
+[[permission]]
+identifier = "deny-get-text"
+description = "Denies the get_text command without any pre-configured scope."
+commands.deny = ["get_text"]
