@@ -1,0 +1,25 @@
+[package]
+name = "tauri-plugin-clipboard-next"
+version = "0.1.4"
+authors = ["zhoushi1"]
+description = "Tauri 2 clipboard plugin: read/write/listen to clipboard (text/rtf/html/image/files) on Windows/macOS/Linux/iOS."
+readme = "README.md"
+homepage = "https://github.com/zhoushi1/tauri-plugin-clipboard-next"
+documentation = "https://docs.rs/tauri-plugin-clipboard-next"
+repository = "https://github.com/zhoushi1/tauri-plugin-clipboard-next"
+keywords = ["tauri", "tauri-plugin", "clipboard", "clipboard-manger", "clipboard-rs"]
+license = "MIT"
+edition = "2021"
+rust-version = "1.77.2"
+exclude = ["/examples", "/dist-js", "/guest-js", "/node_modules"]
+links = "tauri-plugin-clipboard-next"
+
+[dependencies]
+tauri = { version = "2.9.5" }
+serde = "1.0"
+thiserror = "2"
+clipboard-rs = "0.3.1"
+parking_lot = "0.12.5"
+
+[build-dependencies]
+tauri-plugin = { version = "2.5.2", features = ["build"] }

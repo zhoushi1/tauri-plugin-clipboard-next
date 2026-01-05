@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-stop-watch"
+description = "Enables the stop_watch command without any pre-configured scope."
+commands.allow = ["stop_watch"]
+
+[[permission]]
+identifier = "deny-stop-watch"
+description = "Denies the stop_watch command without any pre-configured scope."
+commands.deny = ["stop_watch"]
