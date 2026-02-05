@@ -37,8 +37,8 @@
     "build": "rollup -c",
     "prepublishOnly": "pnpm build",
     "pretest": "pnpm build",
-    "updateVersion": "node scripts/update-version.cjs",
-    "publish": "node scripts/publish-cargo.cjs",
+    "syncVersion": "node scripts/sync-version.cjs",
+    "publishCargo": "node scripts/publish-cargo.cjs",
     "release": "release-it"
   },
   "dependencies": {
