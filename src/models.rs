@@ -12,7 +12,14 @@ pub struct ReadImage {
 
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
+pub struct FileItem {
+    pub path: String,
+    pub size: u64,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct ReadFiles {
-    pub paths: Vec<String>,
+    pub files: Vec<FileItem>,
     pub size: u64,
 }

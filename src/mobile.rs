@@ -244,12 +244,23 @@ impl<R: Runtime> ClipboardNext<R> {
             .get_files()
             .map_err(|err| err.to_string())?;
 
-        let size = files
+        let file_items: Vec<FileItem> = files
             .iter()
-            .map(|file| utils::get_file_size(file).unwrap_or(0))
-            .sum();
+            .map(|path| {
+                let size = utils::get_file_size(path).unwrap_or(0);
+                FileItem {
+                    path: path.clone(),
+                    size,
+                }
+            })
+            .collect();
 
-        Ok(ReadFiles { paths: files, size })
+        let total_size = file_items.iter().map(|item| item.size).sum();
+
+        Ok(ReadFiles {
+            files: file_items,
+            size: total_size,
+        })
     }
 
     pub fn write_text(&self, content: String) -> Result<()> {

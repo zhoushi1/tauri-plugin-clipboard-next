@@ -31,29 +31,67 @@ export const EVENTS = {
 }
 
 export interface ReadImage {
-  // The path of the image
+  /**
+   * @descCN 图像的路径
+   * @descEN The path of the image
+   */
   path: string;
-  // The width of the image
+  /**
+   * @descCN 图像的宽度
+   * @descEN The width of the image
+   */
   width: number;
-  // The height of the image
+  /**
+   * @descCN 图像的高度
+   * @descEN The height of the image
+   */
   height: number;
-  // The size of the image in bytes
+  /**
+   * @descCN 图像的大小，以字节为单位
+   * @descEN The size of the image in bytes
+   */
+  size: number;
+}
+
+export interface FileItem {
+  /**
+   * @descCN 文件的路径
+   * @descEN The path of the file
+   */
+  path: string;
+  /**
+   * @descCN 文件的大小，以字节为单位
+   * @descEN The size of the file in bytes
+   */
   size: number;
 }
 
 export interface ReadFiles {
-  // The paths of the files
-  paths: string[];
-  // The size of the files in bytes
+  /**
+   * @descCN 文件的路径
+   * @descEN The paths of the files
+   */
+  files: FileItem[];
+  /**
+   * @descCN 所有文件的大小，以字节为单位
+   * @descEN The size of the files in bytes
+   */
   size: number;
 }
 
 export type ClipboardContentFormat = "text" | "rtf" | "html" | "image" | "files";
 
 export type ClipboardContent = {
-  // The format of the content
+  /**
+   * @descCN 内容的格式
+   * @descEN The format of the content
+   */
   format: ClipboardContentFormat;
-  // The value of the content
+
+  /**
+   * @descCN 内容的值
+   * @descEN The value of the content
+   */
   value: string | ReadImage | ReadFiles;
 }
 
@@ -62,7 +100,21 @@ export type ReadClipboard = Partial<{ [K in ClipboardContentFormat]: ClipboardCo
 export type ClipboardChangeCallback = (readClipboard: ReadClipboard) => void;
 
 export interface ClipboardChangeOptions {
-  // A hook function that runs before reading the clipboard
+  /**
+   * default value: `false`
+   * @descCN 自动保存图片到`filePath`
+   * @descEN auto save images to `filePath`
+   */
+  imageAutoSave?: boolean;
+  /**
+   * @descCN 保存文件和图片的可选路径，如果未提供则使用默认路径，使用`getFilePath()`获取默认路径位置
+   * @descEN Optional path to save the file and image, if not provided, the default path will be used, use `getFilePath()` to get the default path
+   */
+  filePath?: string;
+  /**
+   * @descCN 读取剪贴板之前运行的钩子函数
+   * @descEN A hook function that runs before reading the clipboard
+   */
   before?: () => void;
 }
 
@@ -359,7 +411,7 @@ export const getFilePath = () => {
  * }
  * ```
  */
-export const readClipboard = async () => {
+export const readClipboard = async (imageAutoSave?: boolean, filePath?: string) => {
   const readClipboard: ReadClipboard = {};
 
   if (await hasText()) {
@@ -386,13 +438,14 @@ export const readClipboard = async () => {
     }
   }
 
-  if (await hasImage()) {
-    const content = await readImage();
+  if (imageAutoSave && await hasImage()) {
+    const content = await readImage(filePath);
     readClipboard.image = {
       format: "image",
       value: content
     }
   }
+
   if (await hasFiles()) {
     const content = await readFiles();
     readClipboard.files = {
@@ -425,12 +478,12 @@ export const readClipboard = async () => {
  * ```
  */
 export const onClipboardChange = (cb: ClipboardChangeCallback, options?: ClipboardChangeOptions) => {
-  const { before } = options || {}
+  const { before, imageAutoSave = false, filePath } = options || {}
 
   return listen(EVENTS.CLIPBOARD_CHANGE, async () => {
     before?.();
 
-    const read = await readClipboard();
+    const read = await readClipboard(imageAutoSave, filePath);
     cb(read);
   })
 }
