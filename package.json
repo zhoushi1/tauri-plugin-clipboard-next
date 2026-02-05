@@ -1,6 +1,6 @@
 {
   "name": "tauri-plugin-clipboard-next-api",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "zhoushi1",
   "description": "Tauri 2 clipboard plugin - read/write/listen to clipboard (text/rtf/html/image/files) across Windows, macOS, Linux and iOS.",
   "keywords": [
