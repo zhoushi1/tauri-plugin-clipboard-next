@@ -2,7 +2,6 @@ import type { Config } from "release-it";
 
 export default {
   git: {
-    requireCleanWorkingDir: false,
     commitMessage: "chore: release v${version}",
     tagName: "v${version}",
     pushRepo: "origin",
