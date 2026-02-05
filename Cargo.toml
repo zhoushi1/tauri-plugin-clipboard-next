@@ -1,6 +1,6 @@
 [package]
 name = "tauri-plugin-clipboard-next"
-version = "0.2.3"
+version = "0.2.4"
 authors = ["zhoushi1"]
 description = "Tauri 2 clipboard plugin: read/write/listen to clipboard (text/rtf/html/image/files) on Windows/macOS/Linux/iOS."
 readme = "README.md"
