@@ -3,6 +3,7 @@
 .Thumbs.db
 *.sublime*
 .idea/
+.claude
 debug.log
 package-lock.json
 .vscode/settings.json
