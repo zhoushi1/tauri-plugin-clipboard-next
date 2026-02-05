@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 // Read version from package.json
 const packageJsonPath = path.join(__dirname, '..', 'package.json');
@@ -13,5 +14,8 @@ const cargoTomlPath = path.join(__dirname, '..', 'Cargo.toml');
 let cargoToml = fs.readFileSync(cargoTomlPath, 'utf8');
 cargoToml = cargoToml.replace(/^version = ".*"/m, `version = "${version}"`);
 fs.writeFileSync(cargoTomlPath, cargoToml, 'utf8');
+
+// Stage Cargo.toml so release-it includes it in the commit
+execSync('git add Cargo.toml', { stdio: 'inherit' });
 
 console.log(`Cargo.toml updated to version ${version}`);

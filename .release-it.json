@@ -6,8 +6,7 @@
     "pushRepo": "origin"
   },
   "npm": {
-    "publish": true,
-    "allowSameVersion": true
+    "publish": true
   },
   "hooks": {
     "after:bump": "pnpm syncVersion",
