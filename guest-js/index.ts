@@ -81,21 +81,26 @@ export interface ReadFiles {
 
 export type ClipboardContentFormat = "text" | "rtf" | "html" | "image" | "files";
 
-export type ClipboardContent = {
+type ClipboardContentValue<T extends ClipboardContentFormat> =
+  T extends "image" ? ReadImage :
+  T extends "files" ? ReadFiles :
+  string;
+
+export type ClipboardContent<T extends ClipboardContentFormat = ClipboardContentFormat> = {
   /**
    * @descCN 内容的格式
    * @descEN The format of the content
    */
-  format: ClipboardContentFormat;
+  format: T;
 
   /**
    * @descCN 内容的值
    * @descEN The value of the content
    */
-  value: string | ReadImage | ReadFiles;
+  value: ClipboardContentValue<T>;
 }
 
-export type ReadClipboard = Partial<{ [K in ClipboardContentFormat]: ClipboardContent }>;
+export type ReadClipboard = Partial<{ [K in ClipboardContentFormat]: ClipboardContent<K> }>;
 
 export type ClipboardChangeCallback = (readClipboard: ReadClipboard) => void;
 

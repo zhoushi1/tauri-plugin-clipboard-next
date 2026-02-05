@@ -55,6 +55,15 @@ const App: React.FC = () => {
       await startWatch()
       onClipboardChange((result) => {
         console.log("Clipboard changed: ", result);
+
+        // const { text, image } = result;
+        //
+        // if (text) {
+        //   console.log("text:", text.value);
+        // }
+        // if (image) {
+        //   console.log("image:", image.value);
+        // }
       });
     })()
   }, []);
