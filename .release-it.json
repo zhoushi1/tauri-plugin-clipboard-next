@@ -9,6 +9,7 @@
     "publish": true
   },
   "hooks": {
-    "after:npm:release": "pnpm syncVersion && pnpm publishCargo"
+    "after:bump": "pnpm syncVersion",
+    "after:npm:release": "pnpm publishCargo"
   }
 }
