@@ -106,7 +106,7 @@ export type ClipboardChangeCallback = (readClipboard: ReadClipboard) => void;
 
 export interface ClipboardChangeOptions {
   /**
-   * default value: `false`
+   * default value: `true`
    * @descCN 自动保存图片到`filePath`
    * @descEN auto save images to `filePath`
    */
@@ -483,7 +483,7 @@ export const readClipboard = async (imageAutoSave?: boolean, filePath?: string) 
  * ```
  */
 export const onClipboardChange = (cb: ClipboardChangeCallback, options?: ClipboardChangeOptions) => {
-  const { before, imageAutoSave = false, filePath } = options || {}
+  const { before, imageAutoSave = true, filePath } = options || {}
 
   return listen(EVENTS.CLIPBOARD_CHANGE, async () => {
     before?.();
